@@ -1,10 +1,10 @@
-v#!/usr/bin/env nextflow
+#!/usr/bin/env nextflow
 
 nextflow.enable.dsl = 2
 
 include { HMMRATAC } from './modules/hmmratac_run/main'
 
-params.input_path = "${projectDir}/data" 
+params.input_path = "${projectDir}/small_data" 
 
 bam_files = Channel.fromPath("${params.input_path}/*.bam") 
 bai_files = Channel.fromPath("${params.input_path}/*.bai")
@@ -26,4 +26,8 @@ bam_bai_ch.view()
 
 workflow HMMRATAC_RUN {
     HMMRATAC (bam_bai_ch)
+}
+
+workflow {
+    HMMRATAC_RUN ()
 }
