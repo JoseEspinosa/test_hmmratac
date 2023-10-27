@@ -1,4 +1,6 @@
 process HMMRATAC {
+    tag "$id"
+    label 'process_medium'
 
     container 'joseespinosa/macs3:3.0.0b3'
 
